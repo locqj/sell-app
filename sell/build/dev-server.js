@@ -21,6 +21,38 @@ var autoOpenBrowser = !!config.dev.autoOpenBrowser
 var proxyTable = config.dev.proxyTable
 
 var app = express()
+
+//获取模拟数据
+var appData = require('../data.json');
+var seller = appData.seller;
+var goods = appData.goods;
+var ratings = appData.ratings;
+
+//模拟api 接口 先调用Router的类库
+var apiRoutes = express.Router();
+apiRoutes.get('/seller', function (req, res) {
+  res.json({
+    errno: 0, //根据业务方定义的错误码
+    data: seller
+  });
+});
+
+apiRoutes.get('/goods', function (req, res) {
+  res.json({
+    errno: 0, //根据业务方定义的错误码
+    data: goods
+  });
+});
+
+apiRoutes.get('/ratings', function (req, res) {
+  res.json({
+    errno: 0, //根据业务方定义的错误码
+    data: ratings
+  });
+});
+// 定义相关路由
+app.use('/api', apiRoutes);
+
 var compiler = webpack(webpackConfig)
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
@@ -87,3 +119,4 @@ module.exports = {
     server.close()
   }
 }
+    
