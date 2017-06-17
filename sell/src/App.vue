@@ -1,15 +1,24 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view></router-view>
+    <header></header>
+    <div class="tab">
+      i am a tab
+    </div>
+    <div class="content">
+      content
+    </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'app'
-}
+<script type="text/ecmascript-6">
+  import header from './components/header/header.vue';
+  export default {
+    components: {
+      header: header
+    }
+  };
 </script>
+
 
 <style>
 #app {
