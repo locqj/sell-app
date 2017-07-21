@@ -4,7 +4,7 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 import VueResouce from 'vue-resource';
-import './src/common/stylus/index';
+
 Vue.use(VueResouce);
 Vue.config.productionTip = false;
 
